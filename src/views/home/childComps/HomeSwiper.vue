@@ -1,6 +1,6 @@
 <template>
   <swiper>
-    <swiper-item v-for="item of banners">
+    <swiper-item v-for="item of banners" :key="item.link">
       <a :href="item.link">
         <img :src="item.image" alt="">
       </a>
