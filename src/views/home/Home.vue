@@ -7,6 +7,7 @@
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
     <tab-control class="tab-control" :titles="['流行','新款','精选']"></tab-control>
+    <good-list :goods="goods['pop'].list"></good-list>
     <ul>
       <li>1001</li>
       <li>1002</li>
@@ -117,13 +118,16 @@ import HomeSwiper from './childComps/HomeSwiper'
 import RecommendView from './childComps/RecommendView'
 import FeatureView from './childComps/FeatureView'
 
+
 import NavBar from 'components/common/navbar/NavBar'
 import TabControl from 'components/content/tabControl/TabControl'
+import GoodList from 'components/goods/GoodsList.vue'
 
 import {
   getHomeMultidata,
   getHomeGoods
 } from 'network/home'
+
 
 
 export default {
@@ -134,6 +138,7 @@ export default {
     FeatureView,
     NavBar,
     TabControl,
+    GoodList,
   },
   data() {
     return {
@@ -193,5 +198,6 @@ export default {
 .tab-control {
   position: sticky;
   top: 44px;
+  z-index: 9;
 }
 </style>
