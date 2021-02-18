@@ -7,28 +7,7 @@
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
     <tab-control class="tab-control" :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>
-    <good-list :goods="goods[currentType].list"></good-list>
-    <ul>
-      <li>1001</li>
-      <li>1002</li>
-      <li>1003</li>
-      <li>1004</li>
-      <li>1005</li>
-      <li>1006</li>
-      <li>1007</li>
-      <li>1008</li>
-      <li>1009</li>
-      <li>10010</li>
-      <li>10011</li>
-      <li>10012</li>
-      <li>10013</li>
-      <li>10014</li>
-      <li>10015</li>
-      <li>10016</li>
-      <li>10017</li>
-      <li>10018</li>
-      <li>10019</li>
-    </ul>
+    <good-list :goods="showGoods"></good-list>
   </div>
 </template>
 
@@ -78,6 +57,12 @@ export default {
     this.getHomeGoods('sell')
 
   },
+  computed: {
+    showGoods() {
+      return this.goods[this.currentType].list
+    }
+  }
+  ,
   methods: {
     /**
      * 事件监听相关
