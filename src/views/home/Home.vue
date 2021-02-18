@@ -6,108 +6,108 @@
     <home-swiper :banners="banners"></home-swiper>
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
-    <tab-control :titles="['流行','新款','精选']"></tab-control>
+    <tab-control class="tab-control" :titles="['流行','新款','精选']"></tab-control>
     <ul>
-      <li>列表1</li>
-      <li>列表2</li>
-      <li>列表3</li>
-      <li>列表4</li>
-      <li>列表5</li>
-      <li>列表6</li>
-      <li>列表7</li>
-      <li>列表8</li>
-      <li>列表9</li>
-      <li>列表10</li>
-      <li>列表11</li>
-      <li>列表12</li>
-      <li>列表13</li>
-      <li>列表14</li>
-      <li>列表15</li>
-      <li>列表16</li>
-      <li>列表17</li>
-      <li>列表18</li>
-      <li>列表19</li>
-      <li>列表20</li>
-      <li>列表21</li>
-      <li>列表22</li>
-      <li>列表23</li>
-      <li>列表24</li>
-      <li>列表25</li>
-      <li>列表26</li>
-      <li>列表27</li>
-      <li>列表28</li>
-      <li>列表29</li>
-      <li>列表30</li>
-      <li>列表31</li>
-      <li>列表32</li>
-      <li>列表33</li>
-      <li>列表34</li>
-      <li>列表35</li>
-      <li>列表36</li>
-      <li>列表37</li>
-      <li>列表38</li>
-      <li>列表39</li>
-      <li>列表40</li>
-      <li>列表41</li>
-      <li>列表42</li>
-      <li>列表43</li>
-      <li>列表44</li>
-      <li>列表45</li>
-      <li>列表46</li>
-      <li>列表47</li>
-      <li>列表48</li>
-      <li>列表49</li>
-      <li>列表50</li>
-      <li>列表51</li>
-      <li>列表52</li>
-      <li>列表53</li>
-      <li>列表54</li>
-      <li>列表55</li>
-      <li>列表56</li>
-      <li>列表57</li>
-      <li>列表58</li>
-      <li>列表59</li>
-      <li>列表60</li>
-      <li>列表61</li>
-      <li>列表62</li>
-      <li>列表63</li>
-      <li>列表64</li>
-      <li>列表65</li>
-      <li>列表66</li>
-      <li>列表67</li>
-      <li>列表68</li>
-      <li>列表69</li>
-      <li>列表70</li>
-      <li>列表71</li>
-      <li>列表72</li>
-      <li>列表73</li>
-      <li>列表74</li>
-      <li>列表75</li>
-      <li>列表76</li>
-      <li>列表77</li>
-      <li>列表78</li>
-      <li>列表79</li>
-      <li>列表80</li>
-      <li>列表81</li>
-      <li>列表82</li>
-      <li>列表83</li>
-      <li>列表84</li>
-      <li>列表85</li>
-      <li>列表86</li>
-      <li>列表87</li>
-      <li>列表88</li>
-      <li>列表89</li>
-      <li>列表90</li>
-      <li>列表91</li>
-      <li>列表92</li>
-      <li>列表93</li>
-      <li>列表94</li>
-      <li>列表95</li>
-      <li>列表96</li>
-      <li>列表97</li>
-      <li>列表98</li>
-      <li>列表99</li>
-      <li>列表100</li>
+      <li>1001</li>
+      <li>1002</li>
+      <li>1003</li>
+      <li>1004</li>
+      <li>1005</li>
+      <li>1006</li>
+      <li>1007</li>
+      <li>1008</li>
+      <li>1009</li>
+      <li>10010</li>
+      <li>10011</li>
+      <li>10012</li>
+      <li>10013</li>
+      <li>10014</li>
+      <li>10015</li>
+      <li>10016</li>
+      <li>10017</li>
+      <li>10018</li>
+      <li>10019</li>
+      <li>10020</li>
+      <li>10021</li>
+      <li>10022</li>
+      <li>10023</li>
+      <li>10024</li>
+      <li>10025</li>
+      <li>10026</li>
+      <li>10027</li>
+      <li>10028</li>
+      <li>10029</li>
+      <li>10030</li>
+      <li>10031</li>
+      <li>10032</li>
+      <li>10033</li>
+      <li>10034</li>
+      <li>10035</li>
+      <li>10036</li>
+      <li>10037</li>
+      <li>10038</li>
+      <li>10039</li>
+      <li>10040</li>
+      <li>10041</li>
+      <li>10042</li>
+      <li>10043</li>
+      <li>10044</li>
+      <li>10045</li>
+      <li>10046</li>
+      <li>10047</li>
+      <li>10048</li>
+      <li>10049</li>
+      <li>10050</li>
+      <li>10051</li>
+      <li>10052</li>
+      <li>10053</li>
+      <li>10054</li>
+      <li>10055</li>
+      <li>10056</li>
+      <li>10057</li>
+      <li>10058</li>
+      <li>10059</li>
+      <li>10060</li>
+      <li>10061</li>
+      <li>10062</li>
+      <li>10063</li>
+      <li>10064</li>
+      <li>10065</li>
+      <li>10066</li>
+      <li>10067</li>
+      <li>10068</li>
+      <li>10069</li>
+      <li>10070</li>
+      <li>10071</li>
+      <li>10072</li>
+      <li>10073</li>
+      <li>10074</li>
+      <li>10075</li>
+      <li>10076</li>
+      <li>10077</li>
+      <li>10078</li>
+      <li>10079</li>
+      <li>10080</li>
+      <li>10081</li>
+      <li>10082</li>
+      <li>10083</li>
+      <li>10084</li>
+      <li>10085</li>
+      <li>10086</li>
+      <li>10087</li>
+      <li>10088</li>
+      <li>10089</li>
+      <li>10090</li>
+      <li>10091</li>
+      <li>10092</li>
+      <li>10093</li>
+      <li>10094</li>
+      <li>10095</li>
+      <li>10096</li>
+      <li>10097</li>
+      <li>10098</li>
+      <li>10099</li>
+      <li>100100</li>
     </ul>
   </div>
 </template>
@@ -120,7 +120,10 @@ import FeatureView from './childComps/FeatureView'
 import NavBar from 'components/common/navbar/NavBar'
 import TabControl from 'components/content/tabControl/TabControl'
 
-import { getHomeMultidata } from 'network/home'
+import {
+  getHomeMultidata,
+  getHomeGoods
+} from 'network/home'
 
 
 export default {
@@ -135,16 +138,39 @@ export default {
   data() {
     return {
       banners: [],
-      recommends: []
+      recommends: [],
+      goods: {
+        'pop': { page: 0, list: [] },
+        'new': { page: 0, list: [] },
+        'sell': { page: 0, list: [] },
+      }
     }
   },
   created() {
-    //1.请求多个数据
-    getHomeMultidata().then(res => {
-      this.banners = res.data.banner.list
-      this.recommends = res.data.recommend.list
-      console.log(this.recommends)
-    })
+    this.getHomeMultidata()
+    this.getHomeGoods('pop')
+    this.getHomeGoods('new')
+    this.getHomeGoods('sell')
+
+  },
+  methods: {
+    getHomeMultidata() {
+      //1.请求多个数据
+      getHomeMultidata().then(res => {
+        this.banners = res.data.banner.list
+        this.recommends = res.data.recommend.list
+      })
+    },
+    getHomeGoods(type) {
+      const page = this.goods[type].page + 1
+
+      //2.请求商品数据
+      getHomeGoods(type, page).then(res => {
+        //存放数据
+        this.goods[type].list.push(...res.data.list)
+        this.goods[type].page += 1
+      })
+    }
   }
 }
 </script>
@@ -162,5 +188,10 @@ export default {
   right: 0;
   top: 0;
   z-index: 9;
+}
+
+.tab-control {
+  position: sticky;
+  top: 44px;
 }
 </style>
