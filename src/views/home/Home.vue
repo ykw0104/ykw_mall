@@ -3,14 +3,15 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <scroll class="content" ref="scroll">
+    <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll" :pull-up-load="true">
+      <!-- 轮播图 -->
       <home-swiper :banners="banners"></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view />
       <tab-control class="tab-control" :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>
       <good-list :goods="showGoods"></good-list>
     </scroll>
-    <back-top @click.native="backClick"></back-top>
+    <back-top @click.native="backClick" v-show="isShowBackUp"></back-top>
   </div>
 </template>
 
@@ -56,22 +57,32 @@ export default {
         'new': { page: 0, list: [] },
         'sell': { page: 0, list: [] },
       },
-      currentType: 'pop'
+      currentType: 'pop',
+      isShowBackUp: false
     }
   },
   created() {
+    //1.请求多个数据
     this.getHomeMultidata()
+
+    //2.请求商品数据
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
 
+
+  },
+  mounted() {
+    // 监听item中图片加载完成
+    this.$bus.$on('itemImageLoad', () => {
+      this.$refs.scroll.refresh()
+    })
   },
   computed: {
     showGoods() {
       return this.goods[this.currentType].list
     }
-  }
-  ,
+  },
   methods: {
     /**
      * 事件监听相关
@@ -92,7 +103,9 @@ export default {
     backClick() {
       this.$refs.scroll.scrollTo(0, 0, 800)  //0.8秒后返回顶部
     },
-
+    contentScroll(position) {
+      this.isShowBackUp = (-position.y) > 1000  //大于1000的时候回到顶部的按钮出现
+    },
     /**
      * 网络请求相关
      */
@@ -111,6 +124,7 @@ export default {
         //存放数据
         this.goods[type].list.push(...res.data.list)
         this.goods[type].page += 1
+
       })
     }
   }
