@@ -50,6 +50,7 @@ export default {
     },
     //刷新重新计算高度
     refresh() {
+      console.log('23232')
       this.scroll && this.scroll.refresh()
     }
   },
