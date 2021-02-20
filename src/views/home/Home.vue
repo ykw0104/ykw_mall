@@ -3,12 +3,13 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
+    <tab-control :titles="['流行','新款','精选']" @tabClick="tabClick" ref="tabControl1" class="tab-control" v-show="isTabFixed"></tab-control>
     <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll" :pull-up-load="true" @pullingUp="loadMore">
       <!-- 轮播图 -->
-      <home-swiper :banners="banners"></home-swiper>
+      <home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad"></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view />
-      <tab-control :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>
+      <tab-control :titles="['流行','新款','精选']" @tabClick="tabClick" ref="tabControl2"></tab-control>
       <good-list :goods="showGoods"></good-list>
     </scroll>
     <back-top @click.native="backClick" v-show="isShowBackUp"></back-top>
@@ -52,7 +53,9 @@ export default {
         'sell': { page: 0, list: [] },
       },
       currentType: 'pop',
-      isShowBackUp: false
+      isShowBackUp: false,
+      tabOffsetTop: 0,
+      isTabFixed: false  //tabcontrol是否已经吸顶
     }
   },
   created() {
@@ -67,13 +70,14 @@ export default {
 
   },
   mounted() {
-
+    //1.图片加载完成的事件监听
     const refresh = debounce(this.$refs.scroll.refresh, 200)
 
     // 监听item中图片加载完成
     this.$bus.$on('itemImageLoad', () => {
       refresh()
     })
+
   },
   computed: {
     showGoods() {
@@ -97,16 +101,25 @@ export default {
           this.currentType = 'sell'
           break
       }
+      this.$refs.tabControl1.currentIndex = index;
+      this.$refs.tabControl2.currentIndex = index;
     },
     backClick() {
       this.$refs.scroll.scrollTo(0, 0, 800)  //0.8秒后返回顶部
     },
     contentScroll(position) {
-      this.isShowBackUp = (-position.y) > 1000  //大于1000的时候回到顶部的按钮出现
+      //1.大于1000的时候回到顶部的按钮会出现
+      this.isShowBackUp = (-position.y) > 1000
+      //2.决定tabControl是否吸顶(position:fixed)
+      this.isTabFixed = (-position.y) > this.tabOffsetTop
     },
     //上拉加载更多
     loadMore() {
       this.getHomeGoods(this.currentType)
+    },
+    swiperImageLoad() {
+      //2.获取tabControl的offsetTop
+      this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop
     },
     /**
      * 网络请求相关
@@ -136,7 +149,7 @@ export default {
 </script>
 <style scoped>
 #home {
-  padding-top: 44px;
+  /* padding-top: 44px; */
   height: 100vh;
   position: relative;
 }
@@ -145,11 +158,11 @@ export default {
   background-color: var(--color-tint);
   color: #fff;
 
-  position: fixed;
+  /* position: fixed;
   left: 0;
   right: 0;
   top: 0;
-  z-index: 9;
+  z-index: 9; */
 }
 
 .content {
@@ -162,6 +175,10 @@ export default {
   right: 0px;
 }
 
+.tab-control {
+  position: relative;
+  z-index: 9;
+}
 /* .content {
   height: calc(100%-93px);
   overflow: hidden;
