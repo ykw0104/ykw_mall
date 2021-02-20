@@ -38,6 +38,13 @@ export default {
       this.$emit('scroll', position)
     })
 
+    //3.监听滚动到底部
+    if (this.pullUpLoad) {
+      this.scroll.on('pullingUp', () => {
+        this.$emit('pullingUp')
+      })
+    }
+
   },
   methods: {
     //点击后置顶,默认0.3秒后置顶
@@ -51,6 +58,10 @@ export default {
     //刷新重新计算高度
     refresh() {
       this.scroll && this.scroll.refresh()
+    },
+    //完成上拉加载更多后执行该函数
+    finishPullUp() {
+      this.scroll && this.scroll.finishPullUp()
     }
   },
 }

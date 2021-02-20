@@ -3,12 +3,12 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll" :pull-up-load="true">
+    <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll" :pull-up-load="true" @pullingUp="loadMore">
       <!-- 轮播图 -->
       <home-swiper :banners="banners"></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view />
-      <tab-control class="tab-control" :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>
+      <tab-control :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>
       <good-list :goods="showGoods"></good-list>
     </scroll>
     <back-top @click.native="backClick" v-show="isShowBackUp"></back-top>
@@ -104,6 +104,10 @@ export default {
     contentScroll(position) {
       this.isShowBackUp = (-position.y) > 1000  //大于1000的时候回到顶部的按钮出现
     },
+    //上拉加载更多
+    loadMore() {
+      this.getHomeGoods(this.currentType)
+    },
     /**
      * 网络请求相关
      */
@@ -123,6 +127,8 @@ export default {
         this.goods[type].list.push(...res.data.list)
         this.goods[type].page += 1
 
+        //完成上拉加载更多
+        this.$refs.scroll.finishPullUp()
       })
     }
   }
@@ -143,12 +149,6 @@ export default {
   left: 0;
   right: 0;
   top: 0;
-  z-index: 9;
-}
-
-.tab-control {
-  position: sticky;
-  top: 44px;
   z-index: 9;
 }
 
