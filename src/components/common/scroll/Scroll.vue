@@ -59,9 +59,13 @@ export default {
     refresh() {
       this.scroll && this.scroll.refresh()
     },
-    //完成上拉加载更多后执行该函数
+    //完成上拉加载更多后执行该函数y:0
     finishPullUp() {
       this.scroll && this.scroll.finishPullUp()
+    },
+    //获取y坐标
+    getScrollY() {
+      return this.scroll ? this.scroll.y : 0
     }
   },
 }

@@ -55,7 +55,8 @@ export default {
       currentType: 'pop',
       isShowBackUp: false,
       tabOffsetTop: 0,
-      isTabFixed: false  //tabcontrol是否已经吸顶
+      isTabFixed: false,  //tabcontrol是否已经吸顶
+      saveY: 0
     }
   },
   created() {
@@ -66,8 +67,6 @@ export default {
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
-
-
   },
   mounted() {
     //1.图片加载完成的事件监听
@@ -77,7 +76,15 @@ export default {
     this.$bus.$on('itemImageLoad', () => {
       refresh()
     })
-
+  },
+  //页面进来时
+  activated() {
+    this.$refs.scroll.scrollTo(0, this.saveY, 0)
+    this.$refs.scroll.refresh()
+  },
+  //页面离开时
+  deactivated() {
+    this.saveY = this.$refs.scroll.getScrollY()
   },
   computed: {
     showGoods() {
