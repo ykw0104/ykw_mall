@@ -27,14 +27,8 @@ import GoodList from 'components/goods/GoodsList.vue'
 import Scroll from 'components/common/scroll/Scroll.vue'
 import BackTop from 'components/content/backTop/BackTop'
 
-import {
-  getHomeMultidata,
-  getHomeGoods
-} from 'network/home'
-
-
-
-
+import { getHomeMultidata, getHomeGoods } from 'network/home'
+import { debounce } from 'components/common/utils/utils.js'
 
 export default {
   name: 'Home',
@@ -74,7 +68,7 @@ export default {
   },
   mounted() {
 
-    const refresh = this.debounce(this.$refs.scroll.refresh, 200)
+    const refresh = debounce(this.$refs.scroll.refresh, 200)
 
     // 监听item中图片加载完成
     this.$bus.$on('itemImageLoad', () => {
@@ -90,16 +84,7 @@ export default {
     /**
      * 事件监听相关
      */
-    //防抖函数
-    debounce(func, delay) {
-      let timer = null
-      return function (...args) {
-        if (timer) { clearTimeout(timer) }
-        timer = setTimeout(() => {
-          func.apply(this, args)
-        }, delay)
-      }
-    },
+
     tabClick(index) {
       switch (index) {
         case 0:
